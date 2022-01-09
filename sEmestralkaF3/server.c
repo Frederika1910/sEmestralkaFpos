@@ -11,6 +11,7 @@
 
 #define MAX_HRACOV 5
 
+
 int pary[10][10];
 int pocetParov;
 int otestovat[2][2];
