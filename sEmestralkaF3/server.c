@@ -129,7 +129,7 @@ void otocKarticku1(int x, int y)
         for (int k = 0; k < pocetParov; k++) {
             if (pary[i][k] == 0)
             {
-                printf("   ");
+                printf("-   ");
             } else {
                 if (x==i && y==k)
                 {
@@ -149,7 +149,7 @@ void otocKarticky2()
         for (int k = 0; k < pocetParov; k++) {
             if (pary[i][k] == 0)
             {
-                printf("   ");
+                printf("-   ");
             } else {
                 if ((otestovat[0][0]==i && otestovat[0][1]==k) || (otestovat[1][0]==i && otestovat[1][1]==k))
                 {
@@ -172,7 +172,7 @@ void vypisHraciuPlochu()
             {
                 printf("X  ");
             } else {
-                printf("   ");
+                printf("-   ");
             }
         }
         printf("\n");
