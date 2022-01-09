@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.PIn79NJrHt/server.c" "/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/server.dir/server.c.o"
+  "/tmp/tmp.PIn79NJrHt/client.c" "/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/semestralkaPexeso.dir/client.c.o"
+  "/tmp/tmp.PIn79NJrHt/main.c" "/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/semestralkaPexeso.dir/main.c.o"
+  "/tmp/tmp.PIn79NJrHt/server.c" "/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/semestralkaPexeso.dir/server.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

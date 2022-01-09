@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.Ghd3uNOTiU
+CMAKE_SOURCE_DIR = /tmp/tmp.PIn79NJrHt
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.Ghd3uNOTiU/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.PIn79NJrHt/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles /tmp/tmp.Ghd3uNOTiU/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles /tmp/tmp.PIn79NJrHt/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -156,17 +156,17 @@ server/fast:
 .PHONY : server/fast
 
 #=============================================================================
-# Target rules for targets named sEmestralkaE3
+# Target rules for targets named semestralkaPexeso
 
 # Build rule for target.
-sEmestralkaE3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sEmestralkaE3
-.PHONY : sEmestralkaE3
+semestralkaPexeso: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 semestralkaPexeso
+.PHONY : semestralkaPexeso
 
 # fast build rule for target.
-sEmestralkaE3/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sEmestralkaE3.dir/build.make CMakeFiles/sEmestralkaE3.dir/build
-.PHONY : sEmestralkaE3/fast
+semestralkaPexeso/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/build
+.PHONY : semestralkaPexeso/fast
 
 client.o: client.c.o
 
@@ -175,6 +175,7 @@ client.o: client.c.o
 # target to build an object file
 client.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/client.c.o
 .PHONY : client.c.o
 
 client.i: client.c.i
@@ -184,6 +185,7 @@ client.i: client.c.i
 # target to preprocess a source file
 client.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/client.c.i
 .PHONY : client.c.i
 
 client.s: client.c.s
@@ -193,6 +195,7 @@ client.s: client.c.s
 # target to generate assembly for a file
 client.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/client.c.s
 .PHONY : client.c.s
 
 main.o: main.c.o
@@ -201,7 +204,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sEmestralkaE3.dir/build.make CMakeFiles/sEmestralkaE3.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -210,7 +213,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sEmestralkaE3.dir/build.make CMakeFiles/sEmestralkaE3.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -219,7 +222,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sEmestralkaE3.dir/build.make CMakeFiles/sEmestralkaE3.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/main.c.s
 .PHONY : main.c.s
 
 server.o: server.c.o
@@ -229,6 +232,7 @@ server.o: server.c.o
 # target to build an object file
 server.c.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/server.c.o
 .PHONY : server.c.o
 
 server.i: server.c.i
@@ -238,6 +242,7 @@ server.i: server.c.i
 # target to preprocess a source file
 server.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/server.c.i
 .PHONY : server.c.i
 
 server.s: server.c.s
@@ -247,6 +252,7 @@ server.s: server.c.s
 # target to generate assembly for a file
 server.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/server.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/semestralkaPexeso.dir/build.make CMakeFiles/semestralkaPexeso.dir/server.c.s
 .PHONY : server.c.s
 
 # Help Target
@@ -258,7 +264,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... client"
-	@echo "... sEmestralkaE3"
+	@echo "... semestralkaPexeso"
 	@echo "... server"
 	@echo "... client.o"
 	@echo "... client.i"

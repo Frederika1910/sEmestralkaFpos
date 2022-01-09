@@ -1,5 +1,5 @@
-/tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles/edit_cache.dir
-/tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles/client.dir
-/tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles/server.dir
-/tmp/tmp.Ghd3uNOTiU/cmake-build-debug/CMakeFiles/sEmestralkaE3.dir
+/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/edit_cache.dir
+/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/client.dir
+/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/server.dir
+/tmp/tmp.PIn79NJrHt/cmake-build-debug/CMakeFiles/semestralkaPexeso.dir

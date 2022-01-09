@@ -100,5 +100,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/client.dir/DependInfo.cmake"
   "CMakeFiles/server.dir/DependInfo.cmake"
-  "CMakeFiles/sEmestralkaE3.dir/DependInfo.cmake"
+  "CMakeFiles/semestralkaPexeso.dir/DependInfo.cmake"
   )

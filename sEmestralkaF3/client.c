@@ -6,15 +6,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdbool.h>
 
-void zadajTvojTip(char* buffer, int sockfd)
+
+
+bool zadajTvojTip(char* buffer, int sockfd)
 {
     int n;
     n = read(sockfd, buffer, 255);
     if (n < 0)
     {
         perror("Error reading from socket");
-        return;
+        return false;
     }
     //Vypíšeme odpoveď z buffra na štandardný výstup.
     printf("%s",buffer);
@@ -26,13 +29,12 @@ void zadajTvojTip(char* buffer, int sockfd)
     if (n < 0)
     {
         perror("Error writing to socket");
-        return;
+        return false;
     }
 
     if (strcmp(buffer, "Koncim\n")==0) {
-        close(sockfd);
         printf("Odpojeny zo servera.\n");
-        exit(0);
+        return false;
     }
 
     bzero(buffer,256);
@@ -41,7 +43,7 @@ void zadajTvojTip(char* buffer, int sockfd)
     if (n < 0)
     {
         perror("Error reading from socket");
-        return;
+        return false;
     }
     //Vypíšeme odpoveď z buffra na štandardný výstup.
     printf("%s ",buffer);
@@ -54,23 +56,23 @@ void zadajTvojTip(char* buffer, int sockfd)
     if (n < 0)
     {
         perror("Error writing to socket");
-        return;
+        return false;
     }
     if (strcmp(buffer, "Koncim\n")==0) {
-        close(sockfd);
         printf("Odpojeny zo servera.\n");
-        exit(0);
+        return false;
     }
     bzero(buffer, 256);
+    return true;
 }
 
 void cakajVysledok(char* buffer, int sockfd)
 {
     int n;
 
-    bzero(buffer,256);
+    int skore;
     //Načítame odpoveď od servra do buffra.
-    n = recv(sockfd, buffer, 256, 0);
+    n = recv(sockfd, &skore, sizeof(int), 0);
     if (n < 0)
     {
         perror("Error reading from socket");
@@ -78,11 +80,27 @@ void cakajVysledok(char* buffer, int sockfd)
     }
     //Vypíšeme odpoveď z buffra na štandardný výstup.
 
-    printf("Moje skore: %s", buffer);
+    printf("Nahrane skore: %d", skore);
 
 }
 
-int main(int argc, char *argv[])
+void vypisHraciuPlochu2(int * stavy, int * pary, int dlzka) {
+    for (int i = 0; i < dlzka; ++i) {
+        for (int j = 0; j < dlzka; ++j) {
+            int index = j + (i * dlzka);
+            if (stavy[index] == 0) {            //este neotocena karta
+                printf("X   ");
+            } else if (stavy[index] == 1) {     //otocena karta
+                printf("%d   ", pary[index]);
+            } else if (stavy[index] == -1) {     //otocena karta
+                printf("-   ");
+            }
+        }
+        printf("\n");
+    }
+}
+
+int startClient(char * hostname, int port)
 {
     int sockfd, n;
     struct sockaddr_in serv_addr;
@@ -90,13 +108,13 @@ int main(int argc, char *argv[])
 
     char buffer[256];
 
-    if (argc < 3)
-    {
-        fprintf(stderr,"usage %s hostname port\n", argv[0]);
-        return 1;
-    }
+    //if (argc < 3)
+    //{
+    //    fprintf(stderr,"usage %s hostname port\n", argv[0]);
+    //    return 1;
+    //}
 
-    server = gethostbyname(argv[1]);
+    server = gethostbyname(hostname);
     if (server == NULL)
     {
         fprintf(stderr, "Error, no such host\n");
@@ -110,7 +128,7 @@ int main(int argc, char *argv[])
             (char*)&serv_addr.sin_addr.s_addr,
             server->h_length
     );
-    serv_addr.sin_port = htons(atoi(argv[2]));
+    serv_addr.sin_port = htons(port);
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
@@ -125,22 +143,55 @@ int main(int argc, char *argv[])
         return 4;
     }
 
-    printf("Vitaj, a drzim palce.\n");
+    printf("Vitaj, a drzim palce.");
 
+    int id;
+    recv(sockfd, &id, sizeof(id), 0);
+    int pocetParov;
+    recv(sockfd, &pocetParov, sizeof(pocetParov), 0);
+    int pary[pocetParov*pocetParov];
+    int stavy[pocetParov*pocetParov];
+    recv(sockfd, pary, sizeof(int)*pocetParov*pocetParov, 0);
+    recv(sockfd, stavy, sizeof(int)*pocetParov*pocetParov, 0);
+
+    printf("Tvoje ID %d.\n", id);
 
     while(1) {
         recv(sockfd, buffer, 255, 0);
         printf("%s\n", buffer);
 
         if (strcmp(buffer, "$S: Si na rade")==0) {
-            zadajTvojTip(buffer,sockfd);
-            zadajTvojTip(buffer,sockfd);
-            //recv(sockfd, buffer, 255,0);
-            //printf("-- %s\n", buffer);
+            //zadajTvojTip(buffer,sockfd);
+            int * index=stavy;
+            recv(sockfd, index, sizeof(int)*pocetParov*pocetParov, 0);
+            vypisHraciuPlochu2(index, pary, pocetParov);
+            if (!zadajTvojTip(buffer,sockfd)) {
+                break;
+            }
+        } else if (strcmp(buffer, "$S: Mas moznost opravit index vacsi ako pocetParov")==0 || (strcmp(buffer,"$S: Zadal si dve rovnake karty. Naprav svoj pokus"))==0) {
+            if (!zadajTvojTip(buffer,sockfd)) {
+                break;
+            }
+        } else if (strcmp(buffer, "$S: Skus este raz")==0) {
+            if (!zadajTvojTip(buffer,sockfd)) {
+                break;
+            }
+        } else if (strcmp(buffer, "$S: Chces otocit uz otocenu karticku")==0) {
+            int * index=stavy;
+            recv(sockfd, index, sizeof(int)*pocetParov*pocetParov, 0);
+            vypisHraciuPlochu2(index, pary, pocetParov);
         }
-        if (strcmp(buffer, "$S: Koniec\n")==0) {
+        else if (strcmp(buffer, "$S: Pokracuj")==0) {
+            if (!zadajTvojTip(buffer,sockfd)) {
+                break;
+            }
+        } else if (strcmp(buffer, "$S: Koniec")==0) {
             cakajVysledok(buffer,sockfd);
             break;
+        } else if (strcmp(buffer, "$S: Zmena")==0 || strcmp(buffer, "$S: Karty su zhodne")==0 || strcmp(buffer, "$S: Karty nie su zhodne")==0) {
+            int * index=stavy;
+            recv(sockfd, index, sizeof(int)*pocetParov*pocetParov, 0);
+            vypisHraciuPlochu2(index, pary, pocetParov);
         }
     }
 
@@ -148,6 +199,3 @@ int main(int argc, char *argv[])
     close(sockfd);
     return 0;
 }
-
-
-

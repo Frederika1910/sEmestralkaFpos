@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/semestralkaPexeso.dir/main.c.o CMakeFiles/semestralkaPexeso.dir/server.c.o CMakeFiles/semestralkaPexeso.dir/client.c.o -o semestralkaPexeso  -lpthread 
