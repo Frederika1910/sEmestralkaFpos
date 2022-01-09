@@ -172,7 +172,7 @@ void vypisHraciuPlochu()
             {
                 printf("X  ");
             } else {
-                printf("-   ");
+                printf("=   ");
             }
         }
         printf("\n");
